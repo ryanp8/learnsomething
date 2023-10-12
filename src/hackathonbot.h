@@ -15,8 +15,13 @@ public:
     double getBalance();
     bool isHolding();
 private:
-    double balance;
-    bool holding;
+    double balance = 0.0;
+    double purchasePrice = 100.0;
+    bool holding = true;
+    int consecutiveIncreasing = 1;
+    int consecutiveDecreasing = 1;
+    double consecutiveCloseStart = 100.0;
+    std::vector<double> priceHistory = {100.0};
 };
 
 #endif //LEARNSOMETHING_HACKATHONBOT_H

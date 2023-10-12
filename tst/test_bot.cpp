@@ -3,7 +3,7 @@
 #include "hackathonbot.h"
 #include <iostream>
 
-TEST(HackathonTests, BasicAssertion) {
+TEST(HackathonTests,  ion) {
     EXPECT_NEAR(4, 4, 1e-4);
 }
 
