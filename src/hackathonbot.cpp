@@ -4,7 +4,15 @@
 
 #include "hackathonbot.h"
 
-HackathonBot::HackathonBot() {};
+HackathonBot::HackathonBot() {
+    this->balance = 0.0;
+    this->purchasePrice = 100.0;
+    this->holding = true;
+    this->consecutiveIncreasing = 1;
+    this->consecutiveDecreasing = 1;
+    this->consecutiveCloseStart = 100.0;
+    this->priceHistory = {100.0};
+};
 
 void HackathonBot::takeAction(float price) {
     if (this->priceHistory.size() > 0) {
