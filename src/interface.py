@@ -38,24 +38,17 @@ class Exchange:
         if n in target_orders:
             q = target_orders[n]
             while q and s:
-                count_shares = min(trade.shares, q[0].shares * q[0].price // trade.price)
+                count_shares = min(s, q[0].shares * q[0].price // trade.price)
                 q[0].shares -= count_shares
                 s -= count_shares
-                match.append(q[0])
+                match.append((q[0].account, count_shares, q[0].price))
                 if q[0].shares == 0:
                     q.popleft()
-            if match:
-                match.append(trade)
-            if s > 0:
-                if n in orders:
-                    orders[n].append(trade)
-                else:
-                    orders[n] = deque([trade])
-        elif n in orders:
-            orders[n].append(trade)
-        else:
-            orders[n] = deque([trade])
+
+        if s > 0:
+            if n in orders:
+                orders[n].append(trade)
+            else:
+                orders[n] = deque([trade])
 
         return match
-
-
