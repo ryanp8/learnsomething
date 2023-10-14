@@ -1,4 +1,5 @@
 import timeit
+import math
 
 def disasterCode():
     for i in range (2,2500):
@@ -18,10 +19,28 @@ def disasterCode():
         if len(uniquePrimes) == 0:
             uniquePrimes.append(i)
 
+
+def pt2():
+    seen_primes = set()
+    for i in range (2,2500):
+        uniquePrimes = []
+        j = 2
+        for j in range(2, math.ceil(math.sqrt(i))):
+            if i % j == 0:
+                if j in seen_primes:
+                    uniquePrimes.append(j)
+                if i // j in seen_primes:
+                    uniquePrimes.append(i // j)
+        if len(uniquePrimes) == 0:
+            seen_primes.add(i)
+            uniquePrimes.append(i)
+
+
+
 # Benchmark the code
 if __name__ == "__main__":
-    benchmark_code = "disasterCode()"
-    setup_code = "from __main__ import disasterCode"
+    benchmark_code = "pt2()"
+    setup_code = "from __main__ import pt2"
 
     # Measure the execution time of disasterCode function
     times = []
