@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include <time.h>
+#include <ctime>
 
 void prime() {
     for (int i = 2; i < 2500; i++) {
@@ -18,4 +18,15 @@ void prime() {
             uniquePrimes.push_back(currentPrime);
         }
     }
+}
+
+int main(void) {
+    double totalTime = 0;
+    for (int i = 0; i < 5; i++) {
+        clock_t start = clock();
+        prime();
+        totalTime += (double) (clock() - start) / CLOCKS_PER_SEC;
+    }
+    std::cout << "Average execution time after 5 runs: " << totalTime / 5 << " seconds\n";
+    return 0;
 }
