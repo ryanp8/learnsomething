@@ -1,4 +1,5 @@
 import timeit
+import math
 
 def disasterCode():
     for i in range (2,2500):
@@ -17,6 +18,24 @@ def disasterCode():
                 uniquePrimes.append(checkPrime)
         if len(uniquePrimes) == 0:
             uniquePrimes.append(i)
+
+
+def pt2():
+    for i in range (2,2500):
+        uniquePrimes = []
+        for j in range (2, int(math.sqrt(i)) + 1):
+            checkPrime = j
+            if i % checkPrime == 0:
+                flag = False
+                for k in range (2, int(math.sqrt(checkPrime)) + 1):
+                    if (j%k==0):
+                        flag = True
+                        break
+                if not flag:
+                    uniquePrimes.append(checkPrime)
+        if len(uniquePrimes) == 0:
+            uniquePrimes.append(i)
+
 
 # Benchmark the code
 if __name__ == "__main__":
